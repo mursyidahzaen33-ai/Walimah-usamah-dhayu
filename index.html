@@ -75,7 +75,7 @@
         /* ANIMASI BURUNG TERBANG */
         .bird-container {
             position: absolute;
-            top: 15%;
+            top: 12%;
             left: -20%;
             z-index: 5;
             pointer-events: none;
@@ -125,7 +125,7 @@
             pointer-events: none;
         }
 
-        /* Kubah & Motif Ornamen Ottoman + Batik */
+        /* Ornamen Ottoman */
         .ottoman-dome {
             width: 85px;
             height: 85px;
@@ -155,7 +155,7 @@
             color: var(--gold-light);
         }
 
-        /* FONT NAMA MEMPELAI BARU & CANTIK */
+        /* FONT NAMA MEMPELAI */
         .couple-title {
             font-family: 'Reenie Beanie', cursive;
             font-size: 3.8rem;
@@ -265,7 +265,7 @@
             text-transform: uppercase;
         }
 
-        /* Navigation Bar Bawah */
+        /* Bottom Navigation Bar */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -296,7 +296,7 @@
             font-weight: bold;
         }
 
-        /* Form Inputs */
+        /* Inputs */
         input, select, textarea {
             width: 100%;
             padding: 10px;
@@ -330,6 +330,11 @@
     </style>
 </head>
 <body>
+
+    <!-- AUDIO PLAYER UTAMA (ARUSATUN NUR) -->
+    <audio id="backsound" loop preload="auto">
+        <source src="https://ia801503.us.archive.org/28/items/ArusatunNur/ArusatunNur.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- Tombol Musik Melayang -->
     <div class="music-toggle" onclick="toggleMusic()">
@@ -503,40 +508,9 @@
             mobileContainer.appendChild(petal);
         }
 
-        // BACKSOUND SYNTHESIZER HARMONI ISLAMI (GUARANTEED TO PLAY NO BROKEN LINK)
-        let audioCtx, isPlaying = false, audioInterval;
-
-        function playNasheedSynthesizer() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-
-            const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25];
-            let noteIdx = 0;
-
-            audioInterval = setInterval(() => {
-                if (!isPlaying) return;
-                let osc = audioCtx.createOscillator();
-                let gain = audioCtx.createGain();
-                
-                osc.type = 'sine';
-                osc.frequency.value = notes[noteIdx % notes.length];
-                
-                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                osc.start();
-                osc.stop(audioCtx.currentTime + 1.2);
-
-                noteIdx = (noteIdx + 1) % notes.length;
-            }, 600);
-        }
+        // KONTROL AUDIO BACKSOUND
+        const audio = document.getElementById('backsound');
+        let isPlaying = false;
 
         // Tangkap Nama Tamu
         const urlParams = new URLSearchParams(window.location.search);
@@ -547,19 +521,22 @@
 
         function openInvitation() {
             document.getElementById('cover').classList.add('hide');
-            isPlaying = true;
-            playNasheedSynthesizer();
-            document.getElementById('music-icon').className = "fas fa-volume-up";
+            audio.play().then(() => {
+                isPlaying = true;
+                document.getElementById('music-icon').className = "fas fa-volume-up";
+            }).catch(err => {
+                console.log("Autoplay blocked:", err);
+            });
         }
 
         function toggleMusic() {
             if (isPlaying) {
+                audio.pause();
                 isPlaying = false;
-                clearInterval(audioInterval);
                 document.getElementById('music-icon').className = "fas fa-volume-mute";
             } else {
+                audio.play();
                 isPlaying = true;
-                playNasheedSynthesizer();
                 document.getElementById('music-icon').className = "fas fa-volume-up";
             }
         }
@@ -571,7 +548,7 @@
             alert('Nomor rekening BSI berhasil disalin!');
         }
 
-        // Countdown Timer
+        // Countdown Timer (13 Maret 2027)
         const targetDate = new Date("March 13, 2027 08:00:00").getTime();
         setInterval(() => {
             const now = new Date().getTime();
