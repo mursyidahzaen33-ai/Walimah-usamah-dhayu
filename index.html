@@ -3,46 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Walimatul 'Ursy Usamah & Dhayu</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
+    <title>Walimatul 'Ursy Usamah & Dhayu - Ottoman Style</title>
+    <!-- Fonts Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary: #2C4A3E; /* Sage / Dark Forest Green */
-            --accent: #C5A059;  /* Soft Gold */
-            --bg-light: #F9F8F3; /* Warm Cream */
-            --card-bg: #FFFFFF;
-            --text-main: #333333;
-            --text-sub: #666666;
+            --ottoman-navy: #0A192F;
+            --ottoman-dark: #050C1A;
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --bg-light: #F8F9FA;
+            --card-bg: #112240;
+            --text-gold: #E6C687;
+            --text-light: #F1F5F9;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background-color: #1a2721;
-            color: var(--text-main);
+            background-color: #020C1B;
+            color: var(--text-light);
             font-family: 'Montserrat', sans-serif;
             display: flex;
             justify-content: center;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Container Mobile Frame */
-        .mobile-frame {
+        /* Frame Mobile */
+        .mobile-container {
             width: 100%;
             max-width: 480px;
-            background-color: var(--bg-light);
+            background: linear-gradient(180deg, var(--ottoman-navy) 0%, var(--ottoman-dark) 100%);
+            border-left: 2px solid var(--gold-primary);
+            border-right: 2px solid var(--gold-primary);
             min-height: 100vh;
             position: relative;
-            box-shadow: 0 0 30px rgba(0,0,0,0.4);
-            overflow-x: hidden;
-            padding-bottom: 80px;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
+            padding-bottom: 90px;
         }
 
-        /* Halaman Cover / Opening Screen */
+        /* Modal Screen / Opening Cover */
         .cover-screen {
             position: fixed;
             top: 0;
@@ -51,8 +55,8 @@
             width: 100%;
             max-width: 480px;
             height: 100vh;
-            background: linear-gradient(rgba(249, 248, 243, 0.92), rgba(249, 248, 243, 0.95)),
-                        url('https://www.transparenttextures.com/patterns/floral-paper.png');
+            background: linear-gradient(rgba(5, 12, 26, 0.92), rgba(10, 25, 47, 0.95)),
+                        url('https://www.transparenttextures.com/patterns/arabesque.png');
             background-size: cover;
             z-index: 9999;
             display: flex;
@@ -70,130 +74,146 @@
             pointer-events: none;
         }
 
-        /* Ornamen Floral / Bunga Frame */
-        .flower-frame {
-            width: 120px;
+        /* Kubah & Motif Ornamen Ottoman */
+        .ottoman-dome {
+            width: 80px;
+            height: 80px;
             margin-bottom: 15px;
-            opacity: 0.85;
+            border: 2px solid var(--gold-primary);
+            border-radius: 50% 50% 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
         }
 
         .arabic-text {
             font-family: 'Amiri', serif;
             font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
+            color: var(--gold-primary);
+            margin: 10px 0;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
         }
 
         .title-sub {
+            font-family: 'Cinzel', serif;
             font-size: 0.85rem;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: var(--accent);
-            font-weight: 600;
+            color: var(--gold-light);
         }
 
         .couple-title {
-            font-family: 'Alex Brush', cursive;
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin: 10px 0;
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--gold-primary);
+            margin: 15px 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         .guest-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            border-radius: 15px;
-            padding: 20px;
+            background: rgba(17, 34, 64, 0.8);
+            border: 1px solid var(--gold-primary);
+            border-radius: 12px;
+            padding: 18px;
             width: 85%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             margin: 20px 0;
+            box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.15);
         }
 
-        .btn-open {
-            background: var(--primary);
-            color: #FFF;
-            border: none;
-            padding: 12px 28px;
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%);
+            color: #050C1A;
+            border: 1px solid var(--gold-light);
+            padding: 12px 30px;
             border-radius: 30px;
             font-size: 0.9rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(44, 74, 62, 0.3);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
             transition: 0.3s;
+            text-decoration: none;
         }
 
-        .btn-open:hover {
-            background: #1e332a;
-        }
+        .btn-gold:hover { transform: translateY(-2px); }
 
-        /* Main Content Section */
+        /* Content Sections */
         section {
-            padding: 40px 20px;
+            padding: 35px 20px;
             text-align: center;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--gold-primary);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 2px;
+            background: var(--gold-primary);
+            margin: 6px auto 0 auto;
         }
 
         .card-box {
             background: var(--card-bg);
-            border-radius: 15px;
-            padding: 25px 20px;
+            border: 1px solid var(--gold-primary);
+            border-radius: 12px;
+            padding: 22px 18px;
             margin-top: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            border: 1px solid rgba(197, 160, 89, 0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
 
-        .section-title {
-            font-family: 'Alex Brush', cursive;
-            font-size: 2.8rem;
-            color: var(--accent);
-            margin-bottom: 5px;
-        }
-
-        /* Mempelai Flex Box */
-        .mempelai-container {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            margin-top: 20px;
-        }
-
+        /* Mempelai */
         .mempelai-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            font-family: 'Amiri', serif;
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--gold-primary);
         }
 
         /* Countdown */
         .countdown-flex {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 18px;
         }
 
         .count-item {
-            background: var(--primary);
-            color: #FFF;
+            background: var(--ottoman-dark);
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-light);
             padding: 10px;
-            border-radius: 10px;
+            border-radius: 8px;
             min-width: 65px;
         }
 
         .count-item span {
             display: block;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
         }
 
         .count-item label {
             font-size: 0.65rem;
-            opacity: 0.8;
+            text-transform: uppercase;
         }
 
-        /* Navigasi Bawah / Bottom Bar */
+        /* Navigation Bar Bawah */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -201,18 +221,16 @@
             transform: translateX(-50%);
             width: 100%;
             max-width: 480px;
-            background: #FFFFFF;
+            background: var(--ottoman-dark);
+            border-top: 1px solid var(--gold-primary);
             display: flex;
             justify-content: space-around;
-            padding: 10px 0;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
+            padding: 12px 0;
             z-index: 1000;
         }
 
         .nav-item {
-            color: var(--text-sub);
+            color: #8892B0;
             text-decoration: none;
             font-size: 0.7rem;
             display: flex;
@@ -222,30 +240,21 @@
         }
 
         .nav-item.active, .nav-item:hover {
-            color: var(--primary);
-            font-weight: 600;
+            color: var(--gold-primary);
+            font-weight: bold;
         }
 
         /* Form Inputs */
         input, select, textarea {
             width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #DDD;
-            border-radius: 8px;
-            margin-top: 6px;
-            margin-bottom: 15px;
-            font-family: inherit;
-        }
-
-        .btn-submit {
-            background: var(--primary);
+            padding: 10px;
+            border: 1px solid var(--gold-primary);
+            border-radius: 6px;
+            background: rgba(5, 12, 26, 0.8);
             color: #FFF;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            width: 100%;
-            font-weight: bold;
-            cursor: pointer;
+            margin-top: 5px;
+            margin-bottom: 12px;
+            font-family: inherit;
         }
 
         /* Music Floating Button */
@@ -253,95 +262,100 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            color: #FFF;
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--gold-primary), #AA7C11);
+            color: #050C1A;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             z-index: 1001;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+            border: 1px solid var(--gold-light);
         }
     </style>
 </head>
 <body>
 
-    <!-- Audio Player (Wedding Nasheed Vocal Only) -->
-    <audio id="audio-nasheed" loop>
+    <!-- Backsound Audio (Nasheed Wedding Vocal Only) -->
+    <audio id="backsound" loop>
         <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a77f2d.mp3?filename=arabic-nasheed-vocal-only-110243.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Tombol Musik Melayang -->
+    <!-- Tombol Musik -->
     <div class="music-toggle" onclick="toggleMusic()">
         <i id="music-icon" class="fas fa-music"></i>
     </div>
 
-    <!-- COVER UNTUK BUKA UNDANGAN (Syar'i Design Style) -->
+    <!-- COVER BUKA UNDANGAN (Ottoman Style) -->
     <div class="cover-screen" id="cover">
-        <svg class="flower-frame" viewBox="0 0 100 100" fill="none" stroke="#C5A059" stroke-width="2">
-            <path d="M50 10 C30 30, 10 30, 10 50 C10 70, 30 70, 50 90 C70 70, 90 70, 90 50 C90 30, 70 30, 50 10 Z" />
-        </svg>
+        <div class="ottoman-dome">
+            <i class="fas fa-mosque" style="font-size: 2rem; color: var(--gold-primary);"></i>
+        </div>
         
         <div class="title-sub">WALIMATUL 'URSY</div>
-        <div class="couple-title">Usamah & Dhayu</div>
+        <div class="couple-title">USAMAH & DHAYU</div>
         <div class="arabic-text">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
 
         <div class="guest-card">
-            <p style="font-size: 0.8rem; color: var(--text-sub);">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
-            <h4 id="cover-guest-name" style="font-size: 1.1rem; color: var(--primary); margin-top: 5px;">Tamu Undangan</h4>
+            <p style="font-size: 0.8rem; color: var(--gold-light);">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+            <h4 id="cover-guest-name" style="font-size: 1.2rem; color: var(--gold-primary); margin-top: 5px; font-family: 'Cinzel', serif;">Tamu Undangan</h4>
         </div>
 
-        <button class="btn-open" onclick="openInvitation()">
+        <button class="btn-gold" onclick="openInvitation()">
             <i class="fas fa-envelope-open"></i> Buka Undangan
         </button>
     </div>
 
-    <!-- KONTEN UTAMA WEBSITES -->
-    <div class="mobile-frame">
+    <!-- CONTAINER UTAMA -->
+    <div class="mobile-container">
 
-        <!-- Header / Surah -->
+        <!-- Home Section -->
         <section id="home">
             <div class="arabic-text">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-            <p style="font-size: 0.85rem; color: var(--text-sub); line-height: 1.6; font-style: italic;">
+            <p style="font-size: 0.85rem; color: var(--gold-light); line-height: 1.6; font-style: italic; margin-top: 10px;">
                 "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya."<br>
-                <strong>(QS. Ar-Rum: 21)</strong>
+                <strong style="color: var(--gold-primary);">(QS. Ar-Rum: 21)</strong>
             </p>
         </section>
 
-        <!-- Mempelai -->
+        <!-- Mempelai Section -->
         <section id="mempelai">
             <div class="section-title">Mempelai</div>
-            <p style="font-size: 0.85rem; color: var(--text-sub);">Dengan memohon rahmat dan ridho Allah Subhanahu wa Ta'ala, kami bermaksud menyelenggarakan pernikahan:</p>
+            <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 10px;">Dengan memohon rahmat dan ridho Allah Subhanahu wa Ta'ala, kami bermaksud menyelenggarakan pernikahan:</p>
 
-            <div class="mempelai-container">
-                <div class="card-box">
-                    <h3 style="font-size: 1.8rem; color: var(--primary);">Usamah</h3>
-                    <p style="font-size: 0.85rem; font-weight: 600; margin-top: 5px;">Usamah</p>
-                    <p style="font-size: 0.8rem; color: var(--text-sub); margin-top: 5px;">Putra dari Bapak Fulan & Ibu Fulanah</p>
-                </div>
+            <div class="card-box">
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--gold-primary);">Usamah</h3>
+                <p style="font-size: 0.85rem; font-weight: bold; margin-top: 5px;">Usamah</p>
+                <p style="font-size: 0.8rem; color: var(--gold-light); margin-top: 5px;">
+                    Putra dari:<br>
+                    <strong>Bapak Zaid Susanto</strong> & <strong>Ibu Mursyidah Zaen</strong>
+                </p>
+            </div>
 
-                <div style="font-family: 'Alex Brush', cursive; font-size: 2.2rem; color: var(--accent);">&</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 2rem; color: var(--gold-primary); margin: 15px 0;">&</div>
 
-                <div class="card-box">
-                    <h3 style="font-size: 1.8rem; color: var(--primary);">Dhayu</h3>
-                    <p style="font-size: 0.85rem; font-weight: 600; margin-top: 5px;">Dirgahayu Regina Ifanda</p>
-                    <p style="font-size: 0.8rem; color: var(--text-sub); margin-top: 5px;">Putri dari Bapak Fulan & Ibu Fulanah</p>
-                </div>
+            <div class="card-box">
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--gold-primary);">Dhayu</h3>
+                <p style="font-size: 0.85rem; font-weight: bold; margin-top: 5px;">Dirgahayu Regina Ifanda</p>
+                <p style="font-size: 0.8rem; color: var(--gold-light); margin-top: 5px;">
+                    Putri dari:<br>
+                    <strong>Bapak Dedi Kurniawan</strong> & <strong>Ibu Amatullah</strong>
+                </p>
             </div>
         </section>
 
-        <!-- Acara & Countdown -->
+        <!-- Acara & Countdown Section -->
         <section id="acara">
             <div class="section-title">Rangkaian Acara</div>
             
             <div class="card-box">
-                <i class="fas fa-ring" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 10px;"></i>
-                <h4 style="color: var(--primary);">Akad & Walimah</h4>
-                <p style="font-size: 0.9rem; margin-top: 8px;"><strong>Ahad, 5 Syawwal 1448 H</strong></p>
-                <p style="font-size: 0.85rem; color: var(--text-sub);">Pukul 08.00 WIB - Selesai</p>
+                <i class="fas fa-ring" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;"></i>
+                <h4 style="color: var(--gold-light); font-family: 'Cinzel', serif; font-size: 1.2rem;">Akad & Walimah</h4>
+                <p style="font-size: 0.95rem; margin-top: 8px;"><strong>Ahad, 5 Syawwal 1448 H</strong></p>
+                <p style="font-size: 0.85rem; color: var(--gold-light);">Pukul 08.00 WIB - Selesai</p>
 
                 <div class="countdown-flex">
                     <div class="count-item"><span id="days">0</span><label>Hari</label></div>
@@ -352,50 +366,63 @@
             </div>
         </section>
 
-        <!-- Adab Walimah -->
+        <!-- Adab Walimah Section -->
         <section id="adab">
             <div class="section-title">Adab Walimah</div>
             <div class="card-box" style="text-align: left;">
-                <ul style="font-size: 0.8rem; color: var(--text-sub); line-height: 1.8; list-style-type: none; padding-left: 0;">
-                    <li><i class="fas fa-check-circle" style="color: var(--accent);"></i> Ikhlas mendoakan kebaikan kedua mempelai</li>
-                    <li><li style="margin-top: 5px;"><i class="fas fa-check-circle" style="color: var(--accent);"></i> Berpakaian syar'i & menutup aurat</li>
-                    <li style="margin-top: 5px;"><i class="fas fa-check-circle" style="color: var(--accent);"></i> Memperhatikan pemisahan (Infishal) ikhwan & akhwat</li>
-                    <li style="margin-top: 5px;"><i class="fas fa-check-circle" style="color: var(--accent);"></i> Memperhatikan waktu shalat fardhu</li>
+                <ul style="font-size: 0.8rem; color: var(--text-light); line-height: 1.8; list-style: none;">
+                    <li><i class="fas fa-check" style="color: var(--gold-primary);"></i> Ikhlas mendoakan kebaikan kedua mempelai</li>
+                    <li style="margin-top: 6px;"><i class="fas fa-check" style="color: var(--gold-primary);"></i> Berpakaian syar'i & menutup aurat</li>
+                    <li style="margin-top: 6px;"><i class="fas fa-check" style="color: var(--gold-primary);"></i> Memperhatikan pemisahan (Infishal) ikhwan & akhwat</li>
+                    <li style="margin-top: 6px;"><i class="fas fa-check" style="color: var(--gold-primary);"></i> Memperhatikan waktu shalat fardhu</li>
                 </ul>
             </div>
         </section>
 
-        <!-- Lokasi -->
+        <!-- Lokasi Section -->
         <section id="lokasi">
             <div class="section-title">Lokasi Acara</div>
             <div class="card-box">
                 <p><strong>Masjid Manarul Ilmi Purbalingga</strong></p>
-                <p style="font-size: 0.8rem; color: var(--text-sub); margin-top: 5px;">H8WF+PHH, Kedungwuluh, Kec. Kalimanah, Kab. Purbalingga, Jawa Tengah 53371</p>
+                <p style="font-size: 0.8rem; color: var(--gold-light); margin-top: 5px;">H8WF+PHH, Kedungwuluh, Kec. Kalimanah, Kab. Purbalingga, Jawa Tengah 53371</p>
                 
-                <a href="https://maps.google.com/?q=H8WF%2BPHH,+Kedungwuluh,+Kec.+Kalimanah,+Kabupaten+Purbalingga,+Jawa+Tengah+53371" target="_blank" class="btn-open" style="margin-top: 15px; text-decoration: none;">
+                <a href="https://maps.google.com/?q=H8WF%2BPHH,+Kedungwuluh,+Kec.+Kalimanah,+Kabupaten+Purbalingga,+Jawa+Tengah+53371" target="_blank" class="btn-gold" style="margin-top: 18px;">
                     <i class="fas fa-map-marked-alt"></i> Petunjuk Google Maps
                 </a>
             </div>
         </section>
 
-        <!-- RSVP -->
+        <!-- Amplop Digital Section -->
+        <section id="amplop">
+            <div class="section-title">Amplop Digital</div>
+            <div class="card-box">
+                <p style="font-size: 0.8rem; color: var(--gold-light);">Bagi yang ingin memberikan kado/hadiah cashless dapat menyalurkan via:</p>
+                <p style="margin-top: 12px;"><strong>Bank Syariah Indonesia (BSI)</strong></p>
+                <p style="font-size: 1.3rem; color: var(--gold-primary); font-weight: bold; letter-spacing: 1px;" id="norek">7154927403</p>
+                <p style="font-size: 0.8rem;">a.n. USAMAH</p>
+                <button class="btn-gold" onclick="copyNorek()" style="margin-top: 12px; padding: 8px 20px; font-size: 0.8rem;"><i class="fas fa-copy"></i> Salin Rekening</button>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
         <section id="rsvp">
-            <div class="section-title">Konfirmasi Kehadiran</div>
+            <div class="section-title">Konfirmasi & Doa</div>
             <div class="card-box" style="text-align: left;">
                 <form onsubmit="submitRSVP(event)">
-                    <label style="font-size: 0.8rem; font-weight: 600;">Nama Anda</label>
-                    <input type="text" id="rsvp-name" placeholder="Nama Lengkap" required>
+                    <label style="font-size: 0.8rem; color: var(--gold-light);">Nama Anda</label>
+                    <input type="text" id="rsvp-name" placeholder="Ketik nama lengkap..." required>
 
-                    <label style="font-size: 0.8rem; font-weight: 600;">Konfirmasi Kehadiran</label>
+                    <label style="font-size: 0.8rem; color: var(--gold-light);">Konfirmasi Kehadiran</label>
                     <select id="rsvp-status">
                         <option value="Hadir">Insya Allah Hadir</option>
+                        <option value="Ragu-ragu">Masih Ragu-ragu</option>
                         <option value="Tidak Hadir">Maaf, Tidak Bisa Hadir</option>
                     </select>
 
-                    <label style="font-size: 0.8rem; font-weight: 600;">Ucapan & Doa</label>
-                    <textarea id="rsvp-msg" rows="3" placeholder="Tulis ucapan doa..." required></textarea>
+                    <label style="font-size: 0.8rem; color: var(--gold-light);">Ucapan / Doa</label>
+                    <textarea id="rsvp-msg" rows="3" placeholder="Tuliskan ucapan & doa..." required></textarea>
 
-                    <button type="submit" class="btn-submit">Kirim Konfirmasi</button>
+                    <button type="submit" class="btn-gold" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Kirim Ucapan</button>
                 </form>
 
                 <div id="rsvp-list" style="margin-top: 20px;"></div>
@@ -404,25 +431,25 @@
 
     </div>
 
-    <!-- Navigasi Bawah Responsive -->
+    <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <a href="#home" class="nav-item active"><i class="fas fa-home"></i>Home</a>
         <a href="#mempelai" class="nav-item"><i class="fas fa-user-friends"></i>Mempelai</a>
-        <a href="#acara" class="nav-item"><i class="fas fa-calendar-check"></i>Acara</a>
+        <a href="#acara" class="nav-item"><i class="fas fa-calendar-alt"></i>Acara</a>
         <a href="#lokasi" class="nav-item"><i class="fas fa-map-marker-alt"></i>Lokasi</a>
-        <a href="#rsvp" class="nav-item"><i class="fas fa-paper-plane"></i>RSVP</a>
+        <a href="#rsvp" class="nav-item"><i class="fas fa-envelope"></i>RSVP</a>
     </nav>
 
     <script>
-        // Tangkap nama tamu dari URL
+        // Tangkap Nama Tamu
         const urlParams = new URLSearchParams(window.location.search);
         const guestName = urlParams.get('to');
         if (guestName) {
             document.getElementById('cover-guest-name').innerText = decodeURIComponent(guestName);
         }
 
-        // Jalankan audio & buka cover
-        const audio = document.getElementById('audio-nasheed');
+        // Kontrol Audio Nasheed
+        const audio = document.getElementById('backsound');
         let isPlaying = false;
 
         function openInvitation() {
@@ -430,7 +457,7 @@
             audio.play().then(() => {
                 isPlaying = true;
                 document.getElementById('music-icon').className = "fas fa-pause";
-            }).catch(e => console.log("Audio auto-play blocked:", e));
+            }).catch(err => console.log("Autoplay ditolak browser:", err));
         }
 
         function toggleMusic() {
@@ -444,11 +471,18 @@
             isPlaying = !isPlaying;
         }
 
+        // Salin No Rekening
+        function copyNorek() {
+            const norek = document.getElementById('norek').innerText;
+            navigator.clipboard.writeText(norek);
+            alert('Nomor rekening BSI berhasil disalin!');
+        }
+
         // Countdown Timer
-        const eventDate = new Date("March 13, 2027 08:00:00").getTime();
+        const targetDate = new Date("March 13, 2027 08:00:00").getTime();
         setInterval(() => {
             const now = new Date().getTime();
-            const diff = eventDate - now;
+            const diff = targetDate - now;
             if (diff > 0) {
                 document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
                 document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -457,7 +491,7 @@
             }
         }, 1000);
 
-        // RSVP Submit
+        // Submit RSVP
         function submitRSVP(e) {
             e.preventDefault();
             const name = document.getElementById('rsvp-name').value;
@@ -467,15 +501,15 @@
             const rsvpList = document.getElementById('rsvp-list');
             const item = document.createElement('div');
             item.style.padding = "10px";
-            item.style.background = "#F9F8F3";
+            item.style.background = "rgba(5, 12, 26, 0.6)";
             item.style.borderRadius = "8px";
             item.style.marginBottom = "8px";
-            item.style.borderLeft = "3px solid var(--primary)";
-            item.innerHTML = `<strong>${name}</strong> <span style="font-size:0.75rem; color:var(--primary);">(${status})</span><p style="font-size:0.8rem; margin-top:3px;">${msg}</p>`;
+            item.style.borderLeft = "3px solid var(--gold-primary)";
+            item.innerHTML = `<strong style="color:var(--gold-primary);">${name}</strong> <span style="font-size:0.75rem; color:var(--gold-light);">(${status})</span><p style="font-size:0.8rem; margin-top:3px; color:#FFF;">${msg}</p>`;
             
             rsvpList.prepend(item);
             e.target.reset();
-            alert('Barakallahu fiik, konfirmasi Anda telah disimpan!');
+            alert('Barakallahu fiik, konfirmasi Anda berhasil terkirim!');
         }
     </script>
 </body>
