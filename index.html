@@ -4,76 +4,335 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Walimatul 'Ursy Usamah & Dhayu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --bg-burgundy: #58111A;
-            --bg-dark-burgundy: #380A10;
+            --bg-burgundy: #4A0E17;
+            --bg-dark-burgundy: #2B070C;
             --gold-accent: #D4AF37;
-            --gold-light: #F3E5AB;
+            --gold-light: #F9E79F;
+            --gold-dark: #996515;
             --text-light: #FAFAFA;
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            background-color: var(--bg-dark-burgundy);
+            background-color: #120204;
             color: var(--text-light);
             font-family: 'Montserrat', sans-serif;
             text-align: center;
             overflow-x: hidden;
+            position: relative;
         }
+
+        /* Container Utama dengan Motif Batik */
         .container {
             max-width: 480px;
             margin: 0 auto;
-            background: linear-gradient(180deg, var(--bg-burgundy) 0%, var(--bg-dark-burgundy) 100%);
-            border-left: 2px solid var(--gold-accent);
-            border-right: 2px solid var(--gold-accent);
+            background: 
+                linear-gradient(180deg, rgba(74, 14, 23, 0.93) 0%, rgba(43, 7, 12, 0.96) 100%),
+                url('https://www.transparenttextures.com/patterns/damask-pattern.png');
+            border-left: 3px solid var(--gold-accent);
+            border-right: 3px solid var(--gold-accent);
             min-height: 100vh;
-            padding: 30px 20px;
-            box-shadow: 0 0 25px rgba(0,0,0,0.8);
+            padding: 40px 20px 80px 20px;
+            box-shadow: 0 0 35px rgba(214, 175, 55, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Ornamen Sudut & Frame Bingkai */
+        .corner-ornament {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            pointer-events: none;
+            opacity: 0.85;
+            filter: drop-shadow(0 0 4px var(--gold-accent));
+        }
+        .top-left { top: 10px; left: 10px; border-top: 3px solid var(--gold-accent); border-left: 3px solid var(--gold-accent); }
+        .top-right { top: 10px; right: 10px; border-top: 3px solid var(--gold-accent); border-right: 3px solid var(--gold-accent); }
+        .bottom-left { bottom: 10px; left: 10px; border-bottom: 3px solid var(--gold-accent); border-left: 3px solid var(--gold-accent); }
+        .bottom-right { bottom: 10px; right: 10px; border-bottom: 3px solid var(--gold-accent); border-right: 3px solid var(--gold-accent); }
+
+        /* Bunga Falling Petals Container */
+        #petals-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .petal {
+            position: absolute;
+            background-color: var(--gold-light);
+            border-radius: 15px 0 15px 0;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0.2; }
+        }
+
+        /* Burung Merpati Terbang (Dua Burung) */
+        .birds-container {
+            margin: 15px 0 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            font-size: 1.8rem;
+            color: var(--gold-light);
+            filter: drop-shadow(0 0 6px var(--gold-accent));
+            animation: float 3s ease-in-out infinite alternate;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-8px); }
+        }
+
+        /* Tipografi & Kaligrafi */
+        .arabic { 
+            font-family: 'Amiri', serif; 
+            font-size: 2.2rem; 
+            color: var(--gold-accent); 
+            margin-bottom: 10px; 
+            line-height: 1.6;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        }
+        .title-latin { 
+            font-family: 'Cinzel', serif; 
+            letter-spacing: 4px; 
+            color: var(--gold-light); 
+            font-size: 1rem; 
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        
+        /* Gambar Pengantin Syar'i Ilustrasi */
+        .couple-illustration {
+            width: 170px;
+            height: 170px;
+            margin: 20px auto;
+            border-radius: 50%;
+            border: 3px solid var(--gold-accent);
+            padding: 5px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            background: radial-gradient(circle, var(--bg-burgundy) 0%, var(--bg-dark-burgundy) 100%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .couple-illustration img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .couple-name { 
+            font-family: 'Cinzel', serif; 
+            font-size: 2.2rem; 
+            color: var(--gold-accent); 
+            margin: 15px 0 5px 0; 
+            font-weight: 900; 
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8); 
+        }
+        .full-name { font-size: 0.9rem; color: var(--gold-light); margin-bottom: 20px; font-weight: 500; }
+
+        /* Box Tamu Undangan */
+        .guest-box { 
+            background: rgba(0, 0, 0, 0.45); 
+            border: 1px solid var(--gold-accent); 
+            border-radius: 12px; 
+            padding: 18px; 
+            margin: 25px 0;
+            backdrop-filter: blur(5px);
+            box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.15);
+        }
+        .guest-name { font-size: 1.3rem; font-weight: 700; color: var(--gold-light); margin-top: 5px; font-family: 'Cinzel', serif; }
+
+        /* Kartu Elegan */
+        .card { 
+            background: rgba(56, 10, 16, 0.75); 
+            border: 1px solid var(--gold-accent); 
+            border-radius: 12px; 
+            padding: 22px 15px; 
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             position: relative;
         }
-        .arabic { font-family: 'Amiri', serif; font-size: 1.8rem; color: var(--gold-accent); margin-bottom: 15px; line-height: 1.6; }
-        .title-latin { font-family: 'Cinzel', serif; letter-spacing: 2px; color: var(--gold-light); font-size: 0.9rem; text-transform: uppercase; }
-        .couple-name { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--gold-accent); margin: 20px 0 5px 0; font-weight: 800; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
-        .full-name { font-size: 0.85rem; color: var(--gold-light); margin-bottom: 15px; }
-        .guest-box { background: rgba(0, 0, 0, 0.3); border: 1px solid var(--gold-accent); border-radius: 8px; padding: 15px; margin: 25px 0; }
-        .guest-name { font-size: 1.2rem; font-weight: 600; color: var(--gold-light); margin-top: 5px; }
-        .card { background: rgba(88, 17, 26, 0.6); border: 1px dashed var(--gold-accent); border-radius: 10px; padding: 20px; margin-bottom: 25px; }
-        .card h3 { font-family: 'Cinzel', serif; color: var(--gold-accent); margin-bottom: 15px; }
+        .card h3 { 
+            font-family: 'Cinzel', serif; 
+            color: var(--gold-accent); 
+            margin-bottom: 15px; 
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        /* Countdown Timer */
         .timer-container { display: flex; justify-content: space-around; margin-top: 15px; }
-        .timer-box { background: var(--bg-dark-burgundy); border: 1px solid var(--gold-accent); padding: 10px; border-radius: 6px; min-width: 60px; }
-        .timer-box span { display: block; font-size: 1.2rem; font-weight: bold; color: var(--gold-light); }
-        .timer-box label { font-size: 0.7rem; text-transform: uppercase; }
-        .btn { display: inline-block; background: linear-gradient(45deg, #B8860B, var(--gold-accent)); color: #000; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: 600; font-size: 0.85rem; margin-top: 15px; border: none; cursor: pointer; transition: 0.3s; }
-        .btn:hover { opacity: 0.9; transform: scale(1.02); }
-        .qr-img { width: 150px; height: 150px; border: 2px solid var(--gold-accent); border-radius: 8px; margin: 10px 0; }
+        .timer-box { 
+            background: var(--bg-dark-burgundy); 
+            border: 1px solid var(--gold-accent); 
+            padding: 10px; 
+            border-radius: 8px; 
+            min-width: 65px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+        }
+        .timer-box span { display: block; font-size: 1.3rem; font-weight: bold; color: var(--gold-light); }
+        .timer-box label { font-size: 0.65rem; text-transform: uppercase; color: #DDD; }
+
+        /* Tombol Mungil & Mewah */
+        .btn { 
+            display: inline-block; 
+            background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%); 
+            color: #1A0306; 
+            padding: 11px 22px; 
+            border-radius: 25px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            margin-top: 15px; 
+            border: 1px solid var(--gold-light); 
+            cursor: pointer; 
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4); }
+
+        /* Form Konfirmasi Kehadiran (RSVP) */
+        .rsvp-option {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .rsvp-btn {
+            flex: 1;
+            padding: 8px 5px;
+            font-size: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid var(--gold-accent);
+            background: rgba(0,0,0,0.4);
+            color: var(--text-light);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .rsvp-btn.active {
+            background: var(--gold-accent);
+            color: #000;
+            font-weight: bold;
+        }
+
+        .qr-img { width: 140px; height: 140px; border: 2px solid var(--gold-accent); border-radius: 8px; margin: 12px 0; }
         .form-group { margin-bottom: 12px; text-align: left; }
-        .form-group label { font-size: 0.8rem; color: var(--gold-light); }
-        .form-group input, .form-group textarea { width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--gold-accent); background: rgba(0,0,0,0.5); color: #fff; margin-top: 4px; }
-        .wishes-list { max-height: 150px; overflow-y: auto; text-align: left; font-size: 0.85rem; margin-top: 15px; border-top: 1px solid var(--gold-accent); padding-top: 10px; }
-        .wish-item { margin-bottom: 8px; padding-bottom: 5px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
-        .wish-item strong { color: var(--gold-accent); }
-        .audio-btn { position: fixed; bottom: 20px; right: 20px; background: var(--gold-accent); color: var(--bg-dark-burgundy); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 10px rgba(0,0,0,0.5); z-index: 100; }
+        .form-group label { font-size: 0.8rem; color: var(--gold-light); display: block; margin-bottom: 4px; }
+        .form-group input, .form-group textarea, .form-group select { 
+            width: 100%; 
+            padding: 10px; 
+            border-radius: 6px; 
+            border: 1px solid var(--gold-accent); 
+            background: rgba(0,0,0,0.6); 
+            color: #fff; 
+            font-family: inherit;
+        }
+
+        .wishes-list { 
+            max-height: 180px; 
+            overflow-y: auto; 
+            text-align: left; 
+            font-size: 0.85rem; 
+            margin-top: 15px; 
+            border-top: 1px solid var(--gold-accent); 
+            padding-top: 10px; 
+        }
+        .wish-item { margin-bottom: 10px; padding: 8px; background: rgba(0,0,0,0.2); border-radius: 6px; border-left: 3px solid var(--gold-accent); }
+        .wish-item strong { color: var(--gold-accent); display: block; }
+        .wish-status { font-size: 0.7rem; color: var(--gold-light); font-style: italic; }
+
+        /* Audio Control Button */
+        .audio-btn { 
+            position: fixed; 
+            bottom: 25px; 
+            right: 25px; 
+            background: linear-gradient(135deg, var(--gold-accent), var(--gold-dark)); 
+            color: #2B070C; 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); 
+            z-index: 999; 
+            font-size: 1.2rem;
+            border: 2px solid var(--gold-light);
+        }
     </style>
 </head>
 <body>
+
+    <!-- Tombol Musik -->
     <div class="audio-btn" onclick="toggleAudio()"><i id="audio-icon" class="fas fa-music"></i></div>
-    <audio id="backsound" loop><source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a77f2d.mp3?filename=arabic-nasheed-vocal-only-110243.mp3" type="audio/mpeg"></audio>
+    <!-- Backsound Nasheed Wedding Vocal Only -->
+    <audio id="backsound" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a77f2d.mp3?filename=arabic-nasheed-vocal-only-110243.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Falling Petals Background -->
+    <div id="petals-container"></div>
+
     <div class="container">
+        <!-- Frame Bingkai Sudut -->
+        <div class="corner-ornament top-left"></div>
+        <div class="corner-ornament top-right"></div>
+        <div class="corner-ornament bottom-left"></div>
+        <div class="corner-ornament bottom-right"></div>
+
+        <!-- Kaligrafi & Judul -->
         <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
         <div class="title-latin">Walimatul 'Ursy</div>
+
+        <!-- Ornaments Burung Merpati Terbang -->
+        <div class="birds-container">
+            <i class="fas fa-dove" style="transform: scaleX(-1);"></i>
+            <i class="fas fa-heart" style="font-size: 1.2rem; color: var(--gold-accent);"></i>
+            <i class="fas fa-dove"></i>
+        </div>
+
+        <!-- Ilustrasi Mempelai Syar'i -->
+        <div class="couple-illustration">
+            <img src="https://img.freepik.com/free-vector/hand-drawn-muslim-wedding-couple-illustration_23-2148960241.jpg" alt="Ilustrasi Pengantin Syar'i">
+        </div>
+
         <div class="couple-name">USAMAH & DHAYU</div>
         <div class="full-name">(Usamah & Dirgahayu Regina Ifanda)</div>
-        <p style="font-size: 0.85rem; font-style: italic; color: var(--gold-light);">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya."<br>(QS. Ar-Rum: 21)</p>
+        
+        <p style="font-size: 0.85rem; font-style: italic; color: var(--gold-light); line-height: 1.6; padding: 0 10px;">
+            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya."<br><strong>(QS. Ar-Rum: 21)</strong>
+        </p>
+
+        <!-- Nama Tamu Undangan -->
         <div class="guest-box">
-            <p style="font-size: 0.8rem;">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+            <p style="font-size: 0.8rem; color: #CCC;">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
             <div class="guest-name" id="guest-name-display">Tamu Undangan</div>
         </div>
+
+        <!-- Waktu & Hitung Mundur -->
         <div class="card">
             <h3><i class="fas fa-calendar-alt"></i> Waktu Acara</h3>
-            <p><strong>Ahad, 5 Syawwal 1448 H</strong></p>
-            <p>Pukul 08.00 WIB - Selesai</p>
+            <p style="font-size: 1.1rem;"><strong>Ahad, 5 Syawwal 1448 H</strong></p>
+            <p style="font-size: 0.9rem; margin-top: 5px;">Pukul 08.00 WIB - Selesai</p>
+            
             <div class="timer-container" id="timer">
                 <div class="timer-box"><span id="days">0</span><label>Hari</label></div>
                 <div class="timer-box"><span id="hours">0</span><label>Jam</label></div>
@@ -81,56 +340,110 @@
                 <div class="timer-box"><span id="seconds">0</span><label>Detik</label></div>
             </div>
         </div>
+
+        <!-- Lokasi -->
         <div class="card">
             <h3><i class="fas fa-map-marker-alt"></i> Lokasi Acara</h3>
             <p><strong>Masjid Manarul Ilmi Purbalingga</strong></p>
-            <p style="font-size: 0.8rem; margin-top: 5px;">H8WF+PHH, Kedungwuluh, Kec. Kalimanah, Kab. Purbalingga, Jawa Tengah 53371</p>
+            <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gold-light);">H8WF+PHH, Kedungwuluh, Kec. Kalimanah, Kab. Purbalingga, Jawa Tengah 53371</p>
             <br>
             <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://maps.google.com/?q=H8WF%2BPHH,+Kedungwuluh,+Kec.+Kalimanah,+Kabupaten+Purbalingga,+Jawa+Tengah+53371" alt="QR Google Maps">
             <br>
             <a href="https://maps.google.com/?q=H8WF%2BPHH,+Kedungwuluh,+Kec.+Kalimanah,+Kabupaten+Purbalingga,+Jawa+Tengah+53371" target="_blank" class="btn"><i class="fas fa-location-arrow"></i> Buka Google Maps</a>
         </div>
+
+        <!-- Amplop Digital -->
         <div class="card">
             <h3><i class="fas fa-gift"></i> Amplop Digital</h3>
-            <p style="font-size: 0.85rem;">Doa restu Anda adalah karunia terindah. Namun jika ingin memberi kado/hadiah cashless, dapat melalui:</p>
+            <p style="font-size: 0.82rem; color: var(--gold-light);">Doa restu Anda adalah karunia terindah. Bagi yang ingin memberi kado cashless/hadiah dapat melalui:</p>
             <br>
             <p><strong>Bank Syariah Indonesia (BSI)</strong></p>
-            <p style="font-size: 1.2rem; color: var(--gold-accent); font-weight: bold;" id="norek">7154927403</p>
+            <p style="font-size: 1.3rem; color: var(--gold-accent); font-weight: bold; letter-spacing: 1px;" id="norek">7154927403</p>
             <p style="font-size: 0.85rem;">a.n. USAMAH</p>
             <button class="btn" onclick="copyRekening()"><i class="fas fa-copy"></i> Salin No. Rekening</button>
         </div>
+
+        <!-- Form RSVP & Doa -->
         <div class="card">
-            <h3><i class="fas fa-envelope"></i> Kirim Doa & Ucapan</h3>
+            <h3><i class="fas fa-envelope"></i> Konfirmasi & Doa</h3>
             <form id="wish-form" onsubmit="submitWish(event)">
-                <div class="form-group"><label>Nama</label><input type="text" id="wish-name" required placeholder="Nama Anda"></div>
-                <div class="form-group"><label>Doa / Ucapan</label><textarea id="wish-message" rows="3" required placeholder="Tuliskan doa terbaik Anda..."></textarea></div>
-                <button type="submit" class="btn" style="width: 100%;">Kirim Ucapan</button>
+                <div class="form-group">
+                    <label>Nama Anda</label>
+                    <input type="text" id="wish-name" required placeholder="Ketik nama lengkap...">
+                </div>
+                
+                <div class="form-group">
+                    <label>Konfirmasi Kehadiran</label>
+                    <select id="wish-rsvp" required>
+                        <option value="Hadir">Insya Allah Hadir</option>
+                        <option value="Ragu-ragu">Masih Ragu-ragu</option>
+                        <option value="Tidak Hadir">Maaf, Tidak Bisa Hadir</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Doa / Ucapan</label>
+                    <textarea id="wish-message" rows="3" required placeholder="Tuliskan doa & ucapan terbaik Anda..."></textarea>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%;"><i class="fas fa-paper-plane"></i> Kirim Konfirmasi & Ucapan</button>
             </form>
+
             <div class="wishes-list" id="wishes-container">
-                <div class="wish-item"><strong>Keluarga Besar:</strong> Semoga menjadi keluarga yang sakinah, mawaddah, wa rahmah. Aamiin.</div>
+                <div class="wish-item">
+                    <strong>Keluarga Besar</strong>
+                    <span class="wish-status">Status: Insya Allah Hadir</span>
+                    <p style="margin-top: 3px;">Semoga menjadi keluarga yang sakinah, mawaddah, wa rahmah. Aamiin YRA.</p>
+                </div>
             </div>
         </div>
-        <p style="font-size: 0.75rem; color: var(--gold-light); margin-top: 20px;">Atas kehadiran dan doa restu Bapak/Ibu/Saudara/i, kami ucapkan terima kasih.<br><strong>Jazakumullahu Khairan Khatsiran.</strong></p>
+
+        <p style="font-size: 0.78rem; color: var(--gold-light); margin-top: 25px; line-height: 1.5;">
+            Atas kehadiran dan doa restu Bapak/Ibu/Saudara/i, kami ucapkan terima kasih.<br>
+            <strong style="color: var(--gold-accent);">Jazakumullahu Khairan Khatsiran.</strong>
+        </p>
     </div>
+
     <script>
+        // Ambil nama dari parameter URL
         const urlParams = new URLSearchParams(window.location.search);
         const guestName = urlParams.get('to');
-        if (guestName) { document.getElementById('guest-name-display').innerText = decodeURIComponent(guestName); }
+        if (guestName) { 
+            document.getElementById('guest-name-display').innerText = decodeURIComponent(guestName); 
+        }
+
+        // Kontrol Audio
         const audio = document.getElementById('backsound');
         const audioIcon = document.getElementById('audio-icon');
         let isPlaying = false;
+
         document.body.addEventListener('click', function() {
-            if (!isPlaying) { audio.play(); isPlaying = true; audioIcon.className = "fas fa-pause"; }
+            if (!isPlaying) { 
+                audio.play(); 
+                isPlaying = true; 
+                audioIcon.className = "fas fa-pause"; 
+            }
         }, { once: true });
+
         function toggleAudio() {
-            if (isPlaying) { audio.pause(); audioIcon.className = "fas fa-music"; } else { audio.play(); audioIcon.className = "fas fa-pause"; }
+            if (isPlaying) { 
+                audio.pause(); 
+                audioIcon.className = "fas fa-music"; 
+            } else { 
+                audio.play(); 
+                audioIcon.className = "fas fa-pause"; 
+            }
             isPlaying = !isPlaying;
         }
+
+        // Copy Nomor Rekening
         function copyRekening() {
             const norek = document.getElementById('norek').innerText;
             navigator.clipboard.writeText(norek);
             alert('Nomor rekening BSI berhasil disalin!');
         }
+
+        // Countdown Timer
         const targetDate = new Date("March 13, 2027 08:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
@@ -142,17 +455,43 @@
                 document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
             }
         }, 1000);
+
+        // Form Submit RSVP
         function submitWish(event) {
             event.preventDefault();
             const name = document.getElementById('wish-name').value;
+            const rsvp = document.getElementById('wish-rsvp').value;
             const message = document.getElementById('wish-message').value;
             const wishesContainer = document.getElementById('wishes-container');
+
             const newWish = document.createElement('div');
             newWish.className = 'wish-item';
-            newWish.innerHTML = `<strong>${name}:</strong> ${message}`;
+            newWish.innerHTML = `
+                <strong>${name}</strong>
+                <span class="wish-status">Status: ${rsvp}</span>
+                <p style="margin-top: 3px;">${message}</p>
+            `;
             wishesContainer.prepend(newWish);
             document.getElementById('wish-form').reset();
+            alert('Terima kasih! Konfirmasi dan doa Anda telah terkirim.');
         }
+
+        // Animasi Bunga Kelopak Gugur (Falling Petals Effect)
+        function createPetal() {
+            const container = document.getElementById('petals-container');
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            
+            const size = Math.random() * 10 + 8;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            petal.style.left = `${Math.random() * 100}%`;
+            petal.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            
+            container.appendChild(petal);
+            setTimeout(() => { petal.remove(); }, 10000);
+        }
+        setInterval(createPetal, 400);
     </script>
 </body>
 </html>
