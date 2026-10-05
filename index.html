@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Walimatul 'Ursy Usamah & Dhayu - Ottoman Style</title>
+    <title>Walimatul 'Ursy Usamah & Dhayu</title>
     <!-- Fonts Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;700;800;900&family=Reenie+Beanie&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -31,6 +31,7 @@
             justify-content: center;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
 
         /* Frame Mobile */
@@ -44,6 +45,56 @@
             position: relative;
             box-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
             padding-bottom: 90px;
+            overflow: hidden;
+        }
+
+        /* ANIMASI BUNGA JATUH */
+        .petal {
+            position: absolute;
+            background: radial-gradient(circle, #fbc2eb 0%, #a18cd1 100%);
+            border-radius: 150% 0 150% 0;
+            opacity: 0.7;
+            pointer-events: none;
+            z-index: 10;
+            animation: animatePetal 10s linear infinite;
+        }
+
+        @keyframes animatePetal {
+            0% {
+                top: -10%;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                top: 105%;
+                transform: translateX(100px) rotate(360deg);
+                opacity: 0.2;
+            }
+        }
+
+        /* ANIMASI BURUNG TERBANG */
+        .bird-container {
+            position: absolute;
+            top: 15%;
+            left: -20%;
+            z-index: 5;
+            pointer-events: none;
+            animation: flyBird 14s linear infinite;
+        }
+
+        .bird {
+            width: 25px;
+            height: 15px;
+            border-top: 2px solid var(--gold-primary);
+            border-left: 2px solid var(--gold-primary);
+            transform: rotate(-45deg);
+            display: inline-block;
+        }
+
+        @keyframes flyBird {
+            0% { left: -20%; top: 12%; transform: scale(0.6); }
+            50% { top: 8%; }
+            100% { left: 120%; top: 15%; transform: scale(0.9); }
         }
 
         /* Modal Screen / Opening Cover */
@@ -74,10 +125,10 @@
             pointer-events: none;
         }
 
-        /* Kubah & Motif Ornamen Ottoman */
+        /* Kubah & Motif Ornamen Ottoman + Batik */
         .ottoman-dome {
-            width: 80px;
-            height: 80px;
+            width: 85px;
+            height: 85px;
             margin-bottom: 15px;
             border: 2px solid var(--gold-primary);
             border-radius: 50% 50% 0 0;
@@ -85,7 +136,7 @@
             align-items: center;
             justify-content: center;
             background: rgba(212, 175, 55, 0.1);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
         .arabic-text {
@@ -104,18 +155,26 @@
             color: var(--gold-light);
         }
 
+        /* FONT NAMA MEMPELAI BARU & CANTIK */
         .couple-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
-            font-weight: 800;
+            font-family: 'Reenie Beanie', cursive;
+            font-size: 3.8rem;
+            font-weight: 700;
             color: var(--gold-primary);
-            margin: 15px 0;
+            margin: 5px 0;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .mempelai-name {
+            font-family: 'Reenie Beanie', cursive;
+            font-size: 3.2rem;
+            color: var(--gold-primary);
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
         }
 
         .guest-card {
-            background: rgba(17, 34, 64, 0.8);
+            background: rgba(17, 34, 64, 0.85);
             border: 1px solid var(--gold-primary);
             border-radius: 12px;
             padding: 18px;
@@ -141,13 +200,13 @@
             text-decoration: none;
         }
 
-        .btn-gold:hover { transform: translateY(-2px); }
-
         /* Content Sections */
         section {
             padding: 35px 20px;
             text-align: center;
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            position: relative;
+            z-index: 2;
         }
 
         .section-title {
@@ -176,13 +235,6 @@
             padding: 22px 18px;
             margin-top: 20px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-        }
-
-        /* Mempelai */
-        .mempelai-card h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
-            color: var(--gold-primary);
         }
 
         /* Countdown */
@@ -279,24 +331,19 @@
 </head>
 <body>
 
-    <!-- Backsound Audio (Nasheed Wedding Vocal Only) -->
-    <audio id="backsound" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a77f2d.mp3?filename=arabic-nasheed-vocal-only-110243.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Tombol Musik -->
+    <!-- Tombol Musik Melayang -->
     <div class="music-toggle" onclick="toggleMusic()">
-        <i id="music-icon" class="fas fa-music"></i>
+        <i id="music-icon" class="fas fa-volume-up"></i>
     </div>
 
-    <!-- COVER BUKA UNDANGAN (Ottoman Style) -->
+    <!-- COVER BUKA UNDANGAN -->
     <div class="cover-screen" id="cover">
         <div class="ottoman-dome">
             <i class="fas fa-mosque" style="font-size: 2rem; color: var(--gold-primary);"></i>
         </div>
         
         <div class="title-sub">WALIMATUL 'URSY</div>
-        <div class="couple-title">USAMAH & DHAYU</div>
+        <div class="couple-title">Usamah & Dhayu</div>
         <div class="arabic-text">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
 
         <div class="guest-card">
@@ -311,6 +358,9 @@
 
     <!-- CONTAINER UTAMA -->
     <div class="mobile-container">
+
+        <!-- ANIMASI BURUNG TERBANG -->
+        <div class="bird-container"><div class="bird"></div></div>
 
         <!-- Home Section -->
         <section id="home">
@@ -327,19 +377,18 @@
             <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 10px;">Dengan memohon rahmat dan ridho Allah Subhanahu wa Ta'ala, kami bermaksud menyelenggarakan pernikahan:</p>
 
             <div class="card-box">
-                <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--gold-primary);">Usamah</h3>
-                <p style="font-size: 0.85rem; font-weight: bold; margin-top: 5px;">Usamah</p>
+                <div class="mempelai-name">Usamah</div>
                 <p style="font-size: 0.8rem; color: var(--gold-light); margin-top: 5px;">
                     Putra dari:<br>
                     <strong>Bapak Zaid Susanto</strong> & <strong>Ibu Mursyidah Zaen</strong>
                 </p>
             </div>
 
-            <div style="font-family: 'Cinzel', serif; font-size: 2rem; color: var(--gold-primary); margin: 15px 0;">&</div>
+            <div style="font-family: 'Reenie Beanie', cursive; font-size: 3rem; color: var(--gold-primary); margin: 10px 0;">&</div>
 
             <div class="card-box">
-                <h3 style="font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--gold-primary);">Dhayu</h3>
-                <p style="font-size: 0.85rem; font-weight: bold; margin-top: 5px;">Dirgahayu Regina Ifanda</p>
+                <div class="mempelai-name">Dirgahayu Regina Ifanda</div>
+                <p style="font-size: 0.9rem; font-weight: bold; color: var(--gold-primary);">(Dhayu)</p>
                 <p style="font-size: 0.8rem; color: var(--gold-light); margin-top: 5px;">
                     Putri dari:<br>
                     <strong>Bapak Dedi Kurniawan</strong> & <strong>Ibu Amatullah</strong>
@@ -441,6 +490,54 @@
     </nav>
 
     <script>
+        // GENERATE BUNGA JATUH SINTETIS
+        const mobileContainer = document.querySelector('.mobile-container');
+        for (let i = 0; i < 15; i++) {
+            let petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.width = Math.random() * 12 + 8 + 'px';
+            petal.style.height = Math.random() * 12 + 8 + 'px';
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.animationDelay = Math.random() * 8 + 's';
+            petal.style.animationDuration = Math.random() * 6 + 6 + 's';
+            mobileContainer.appendChild(petal);
+        }
+
+        // BACKSOUND SYNTHESIZER HARMONI ISLAMI (GUARANTEED TO PLAY NO BROKEN LINK)
+        let audioCtx, isPlaying = false, audioInterval;
+
+        function playNasheedSynthesizer() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25];
+            let noteIdx = 0;
+
+            audioInterval = setInterval(() => {
+                if (!isPlaying) return;
+                let osc = audioCtx.createOscillator();
+                let gain = audioCtx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.value = notes[noteIdx % notes.length];
+                
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.2);
+
+                noteIdx = (noteIdx + 1) % notes.length;
+            }, 600);
+        }
+
         // Tangkap Nama Tamu
         const urlParams = new URLSearchParams(window.location.search);
         const guestName = urlParams.get('to');
@@ -448,27 +545,23 @@
             document.getElementById('cover-guest-name').innerText = decodeURIComponent(guestName);
         }
 
-        // Kontrol Audio Nasheed
-        const audio = document.getElementById('backsound');
-        let isPlaying = false;
-
         function openInvitation() {
             document.getElementById('cover').classList.add('hide');
-            audio.play().then(() => {
-                isPlaying = true;
-                document.getElementById('music-icon').className = "fas fa-pause";
-            }).catch(err => console.log("Autoplay ditolak browser:", err));
+            isPlaying = true;
+            playNasheedSynthesizer();
+            document.getElementById('music-icon').className = "fas fa-volume-up";
         }
 
         function toggleMusic() {
             if (isPlaying) {
-                audio.pause();
-                document.getElementById('music-icon').className = "fas fa-music";
+                isPlaying = false;
+                clearInterval(audioInterval);
+                document.getElementById('music-icon').className = "fas fa-volume-mute";
             } else {
-                audio.play();
-                document.getElementById('music-icon').className = "fas fa-pause";
+                isPlaying = true;
+                playNasheedSynthesizer();
+                document.getElementById('music-icon').className = "fas fa-volume-up";
             }
-            isPlaying = !isPlaying;
         }
 
         // Salin No Rekening
